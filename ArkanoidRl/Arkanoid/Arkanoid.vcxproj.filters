@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\src\Objects\Ball\Ball.cpp">
+      <Filter>Objects\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Objects\Player\Player.cpp">
+      <Filter>Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Screens\Menu.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Screens\Gameplay.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Screens\GameOver.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Screens\Credits.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Draw\Draw.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Global\Global.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Global\Brick.cpp">
+      <Filter>Objects\Brick</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Draw">
+      <UniqueIdentifier>{a9a65da8-a3f1-4942-ad27-4ff4f98de23e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{c7799789-f247-4297-a2e3-b7a1259ee7f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{fe6b7aa2-9b13-4449-b89a-f1f12272d71f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{cceb1e9b-ca89-4781-8001-8c1a6dce85f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Player">
+      <UniqueIdentifier>{0db855fe-1479-4517-9129-956bdb17b729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Ball">
+      <UniqueIdentifier>{758a4d3a-994c-464c-a050-0d1a564e869c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Brick">
+      <UniqueIdentifier>{f652d70d-b315-451e-9c44-0639e388fd03}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Objects\Ball\Ball.h">
+      <Filter>Objects\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Objects\Player\Player.h">
+      <Filter>Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Screens\Menu.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Screens\GameOver.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Screens\Credits.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Screens\Gameplay.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Draw\Draw.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Global\Global.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Global\Brick.h">
+      <Filter>Objects\Brick</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
