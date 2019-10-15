@@ -2,8 +2,6 @@
 
 namespace RlArkJB
 {
-	namespace Paleta
-	{
 
 		Player InitPlayer(int posX, int posY, int width, int height)
 		{
@@ -16,5 +14,4 @@ namespace RlArkJB
 			return player;
 		}
 
-	}
 }

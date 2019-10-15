@@ -13,7 +13,7 @@ namespace RlArkJB
 
 	namespace Menu
 	{
-			}
+	}
 }
 
 #endif

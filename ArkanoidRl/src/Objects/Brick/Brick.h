@@ -7,18 +7,17 @@
 #include "Objects/Player/Player.h"
 
 namespace RlArkJB
+
 {
 #define LINES_OF_BRICKS         5
 #define BRICKS_PER_LINE        20
 
-	typedef struct Brick {
+	struct Brick {
 		Vector2 position;
 		bool active;
-	} Brick;
+	};
 
-	namespace Brick
-	{
-		
-	}
+	extern Brick brick[LINES_OF_BRICKS][BRICKS_PER_LINE];
+	extern Vector2 brickSize;
 }
 #endif

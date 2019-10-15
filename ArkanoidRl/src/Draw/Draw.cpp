@@ -1,11 +1,14 @@
 #include "Draw.h"
 
+#include "Screens/Menu.h"
+#include "Screens/GameOver.h"
+#include "Screens/Gameplay.h"
+#include "Objects/Brick/Brick.h"
+#include "Global/Global.h"
+
 namespace RlArkJB
 {
-
-	namespace Draw
-	{
-		void DrawGame(void)
+		void DrawGame(Ball &ball, Player &player1, Player &player2)
 		{
 			BeginDrawing();
 
@@ -14,10 +17,10 @@ namespace RlArkJB
 			if (!gameOver)
 			{
 				// Draw player bar
-				DrawRectangle(player.position.x - player.size.x / 2, player.position.y - player.size.y / 2, player.size.x, player.size.y, BLACK);
+				DrawRectangle(player1.position.x - player1.size.x / 2, player1.position.y - player1.size.y / 2, player1.size.x, player1.size.y, BLACK);
 
 				// Draw player lives
-				for (int i = 0; i < player.life; i++) DrawRectangle(20 + 40 * i, screenHeight - 30, 35, 10, LIGHTGRAY);
+				for (int i = 0; i < player1.life; i++) DrawRectangle(20 + 40 * i, screenHeight - 30, 35, 10, LIGHTGRAY);
 
 				// Draw ball
 				DrawCircleV(ball.position, ball.radius, MAROON);
@@ -37,15 +40,15 @@ namespace RlArkJB
 
 				if (pause) DrawText("GAME PAUSED", screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
 			}
-			else DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth() / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, GetScreenHeight() / 2 - 50, 20, GRAY);
+			else DrawText("PRESS [ENTER] TO PLAY AGAIN", screenWidth / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, screenHeight / 2 - 50, 20, GRAY);
 
 			EndDrawing();
 		}
 
-		void UpdateDrawFrame(void)
+		void UpdateDrawFrame(Ball &ball, Player &player1, Player &player2)
 		{
-			Game::UpdateGame();
-			DrawGame();
+			UpdateGame(ball, player1, player2);
+			DrawGame(ball, player1, player2);
 		}
-	}
+
 }

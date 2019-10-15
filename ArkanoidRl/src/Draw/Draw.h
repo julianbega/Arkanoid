@@ -3,20 +3,15 @@
 
 #include "raylib.h"
 
-#include "Screens/Menu.h"
-#include "Screens/GameOver.h"
-#include "Screens/Gameplay.h"
+#include "Objects/Ball/Ball.h"
+#include "Objects/Player/Player.h"
+
 
 namespace RlArkJB
 {
 
-	namespace Draw
-	{
-		static void DrawGame(void);
-		static void UpdateDrawFrame(void);
-	}
-
-	
+		void DrawGame(Ball &ball, Player &player1, Player &player2);
+		void UpdateDrawFrame(Ball &ball, Player &player1, Player &player2);
 
 }
 #endif

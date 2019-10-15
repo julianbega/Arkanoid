@@ -10,14 +10,12 @@ namespace RlArkJB
 {
 	const int pointsToWin = 2;
 
-	namespace Game
-	{
-		static void InitGame(void); 
-		static void StartGame();
-		static void UpdateGame(void);
-		static void UnloadGame(void);
+	
+		 void InitGame(Ball &ball, Player &player1, Player &player2);
+		 void StartGame();
+		 void UpdateGame(Ball &ball, Player &player1, Player &player2);
+		 void UnloadGame(Ball &ball, Player &player1, Player &player2);
 		
-	}
 
 }
 

@@ -1,11 +1,12 @@
 #include "Gameplay.h"
 
+#include "Objects/Brick/Brick.h"
+#include "Global/Global.h"
+
+
 namespace RlArkJB
 {
-	int screenHeight = 450;
-	int screenWidth = 800;
-	namespace Game
-	{
+	
 		void StartGame()
 		{
 			InitWindow(screenWidth, screenHeight, "sample game: arkanoid"); 
@@ -14,38 +15,33 @@ namespace RlArkJB
 			Player player1;
 			Player player2;
 			int currentScreen = 1;
-			InitGame(); //(player1, player2, ball, currentScreen)
+			InitGame(ball, player1, player2); //(player1, player2, ball, currentScreen)
 			
 			while (!WindowShouldClose())    // Detect window close button or ESC key
 			{
 				// Update and Draw
 				//----------------------------------------------------------------------------------
-				Draw::UpdateDrawFrame();
+				UpdateDrawFrame(ball, player1, player2);
 				//----------------------------------------------------------------------------------
 			}
-			UnloadGame();         // Unload loaded data (textures, sounds, models...)
+			//UnloadGame();         // Unload loaded data (textures, sounds, models...)
 
 			CloseWindow();
 		}
 
-		void InitGame(void)
+		void InitGame(Ball &ball, Player &player1, Player &player2)
 		{
 			brickSize.x = GetScreenWidth() / BRICKS_PER_LINE;
 			brickSize.y = 40;
 
-			// Initialize player
-			player.position.x = screenWidth / 2;
-			player.position.y =  screenHeight * 7 / 8;
-			player.size.x = screenWidth / 10;
-			player.size.y = 20;
-			player.life = PLAYER_MAX_LIFE;
+			player1 = InitPlayer(screenWidth / 2, screenHeight * 7 / 8, screenWidth / 10, 20); ///////////// Cambiar a statics como playerwith, etc
 
+			player2 = InitPlayer(1, 1, 80, 20); ///////////// 
 			// Initialize ball
-			ball.position.x = screenWidth / 2;
-			ball.position.y =  screenHeight * 7 / 8 - 30;
+
+			ball = InitBall(screenWidth / 2, screenHeight * 7 / 8 - 30, 7);
 			ball.speed.x = 0;
 			ball.speed.y = 0;
-			ball.radius = 7;
 			ball.active = false;
 
 			// Initialize bricks
@@ -55,13 +51,14 @@ namespace RlArkJB
 			{
 				for (int j = 0; j < BRICKS_PER_LINE; j++)
 				{
-					brick[i][j].position = (Vector2) { j*brickSize.x + brickSize.x / 2, i*brickSize.y + initialDownPosition };
+					brick[i][j].position.x = j*brickSize.x + brickSize.x / 2;
+					brick[i][j].position.y =  i*brickSize.y + initialDownPosition;
 					brick[i][j].active = true;
 				}
 			}
 		}
 
-		void UpdateGame(void)
+		void UpdateGame(Ball &ball, Player &player1, Player &player2)
 		{
 			if (!gameOver)
 			{
@@ -70,10 +67,10 @@ namespace RlArkJB
 				if (!pause)
 				{
 					// Player movement logic
-					if (IsKeyDown(KEY_LEFT)) player.position.x -= 5;
-					if ((player.position.x - player.size.x / 2) <= 0) player.position.x = player.size.x / 2;
-					if (IsKeyDown(KEY_RIGHT)) player.position.x += 5;
-					if ((player.position.x + player.size.x / 2) >= screenWidth) player.position.x = screenWidth - player.size.x / 2;
+					if (IsKeyDown(KEY_LEFT)) player1.position.x -= 5;
+					if ((player1.position.x - player1.size.x / 2) <= 0) player1.position.x = player1.size.x / 2;
+					if (IsKeyDown(KEY_RIGHT)) player1.position.x += 5;
+					if ((player1.position.x + player1.size.x / 2) >= screenWidth) player1.position.x = screenWidth - player1.size.x / 2;
 
 					// Ball launching logic
 					if (!ball.active)
@@ -81,7 +78,7 @@ namespace RlArkJB
 						if (IsKeyPressed(KEY_SPACE))
 						{
 							ball.active = true;
-							ball.speed = (Vector2) { 0, -5 };
+							ball.speed =  { 0, -5 };
 						}
 					}
 
@@ -93,7 +90,8 @@ namespace RlArkJB
 					}
 					else
 					{
-						ball.position = (Vector2) { player.position.x, screenHeight * 7 / 8 - 30 };
+						ball.position.x =  player1.position.x ;
+						ball.position.y = screenHeight * 7 / 8 - 30;
 					}
 
 					// Collision logic: ball vs walls 
@@ -101,22 +99,21 @@ namespace RlArkJB
 					if ((ball.position.y - ball.radius) <= 0) ball.speed.y *= -1;
 					if ((ball.position.y + ball.radius) >= screenHeight)
 					{
-						ball.speed = (Vector2) { 0, 0 };
+						ball.speed = { 0, 0 };
 						ball.active = false;
 
-						player.life--;
+						player1.life--;
 					}
 
 					// Collision logic: ball vs player
 					if (CheckCollisionCircleRec(ball.position, ball.radius,
-						(Rectangle) {
-						player.position.x - player.size.x / 2, player.position.y - player.size.y / 2, player.size.x, player.size.y
-					}))
+						{player1.position.x - player1.size.x / 2, player1.position.y - player1.size.y / 2, player1.size.x, player1.size.y}
+					))
 					{
 						if (ball.speed.y > 0)
 						{
 							ball.speed.y *= -1;
-							ball.speed.x = (ball.position.x - player.position.x) / (player.size.x / 2) * 5;
+							ball.speed.x = (ball.position.x - player1.position.x) / (player1.size.x / 2) * 5;
 						}
 					}
 
@@ -164,7 +161,7 @@ namespace RlArkJB
 						}
 
 						// Game over logic
-						if (player.life <= 0) gameOver = true;
+						if (player1.life <= 0) gameOver = true;
 						else
 						{
 							gameOver = true;
@@ -183,15 +180,15 @@ namespace RlArkJB
 			{
 				if (IsKeyPressed(KEY_ENTER))
 				{
-					InitGame();
+					InitGame(ball, player1, player2);
 					gameOver = false;
 				}
 			}
 		}
 
-		void UnloadGame(void)
+		void UnloadGame()
 		{
 			// TODO: Unload all dynamic loaded data (textures, sounds, models...)
 		}
-	}
+	
 }

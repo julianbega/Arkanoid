@@ -1,10 +1,8 @@
 #include "Ball.h"
 namespace RlArkJB
 {
-	namespace Pelota
-	{
-
-		Ball InitPelota(float posX, float posY, float radius)
+	
+		Ball InitBall(float posX, float posY, float radius)
 		{
 			Ball Pelota;
 			Pelota.position.x = posX;
@@ -13,7 +11,4 @@ namespace RlArkJB
 			Pelota.active = true;
 			return Pelota;
 		}
-
-		
-	}
 }

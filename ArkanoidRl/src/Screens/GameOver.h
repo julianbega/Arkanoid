@@ -1,5 +1,5 @@
-#ifndef PANTALLA_GAME_OVER_H
-#define PANTALLA_GAME_OVER_H
+#ifndef GAME_OVER_SCREEN_H
+#define GAME_OVER_SCREEN_H
 
 #include "raylib.h"
 

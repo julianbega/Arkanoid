@@ -2,9 +2,6 @@
 namespace RlArkJB
 {
 
-	namespace Menu
-	{
-		
-	}
+	
 
 }

@@ -166,10 +166,10 @@
 #endif
 
 // Vector2 type
-typedef struct Vector2 {
+struct Vector2 {
     float x;
     float y;
-} Vector2;
+} ;
 
 // Vector3 type
 typedef struct Vector3 {

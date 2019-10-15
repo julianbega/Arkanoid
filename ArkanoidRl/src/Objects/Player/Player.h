@@ -7,15 +7,12 @@ namespace RlArkJB
 {
 #define PLAYER_MAX_LIFE         5
 
-	typedef struct Player {
+	struct Player {
 		Vector2 position;
 		Vector2 size;
 		int life;
-	} Player;
-
-	namespace Paleta
-	{
-		Player InitPlayer(int posX, int posY, int width, int height);
-	}
+	} ;
+		
+	Player InitPlayer(int posX, int posY, int width, int height);
 }
 #endif

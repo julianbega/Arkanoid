@@ -14,5 +14,5 @@
 
 void main()
 {
-	RlArkJB::Game::StartGame();
+	RlArkJB::StartGame();
 }
