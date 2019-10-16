@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Draw\Draw.cpp" />
+    <ClCompile Include="..\src\Global\Game.cpp" />
     <ClCompile Include="..\src\Global\Global.cpp" />
     <ClCompile Include="..\src\Objects\Ball\Ball.cpp" />
     <ClCompile Include="..\src\Objects\Brick\Brick.cpp" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Draw\Draw.h" />
+    <ClInclude Include="..\src\Global\Game.h" />
     <ClInclude Include="..\src\Global\Global.h" />
     <ClInclude Include="..\src\Objects\Ball\Ball.h" />
     <ClInclude Include="..\src\Objects\Brick\Brick.h" />

@@ -11,9 +11,10 @@ namespace RlArkJB
 {
 	using namespace std;
 
-	namespace Menu
-	{
-	}
+	
+		void MainMenu();
+		void UpdateMenu();
+	
 }
 
 #endif

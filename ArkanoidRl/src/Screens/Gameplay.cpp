@@ -1,7 +1,12 @@
 #include "Gameplay.h"
 
 #include "Objects/Brick/Brick.h"
+#include "Objects/Player/Player.h"
 #include "Global/Global.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 
 
 namespace RlArkJB
@@ -9,8 +14,6 @@ namespace RlArkJB
 	
 		void StartGame()
 		{
-			InitWindow(screenWidth, screenHeight, "sample game: arkanoid"); 
-			SetTargetFPS(60);
 			Ball ball;
 			Player player1;
 			Player player2;
@@ -32,20 +35,19 @@ namespace RlArkJB
 		void InitGame(Ball &ball, Player &player1, Player &player2)
 		{
 			brickSize.x = GetScreenWidth() / BRICKS_PER_LINE;
-			brickSize.y = 40;
+			brickSize.y = 40.0f;
 
-			player1 = InitPlayer(screenWidth / 2, screenHeight * 7 / 8, screenWidth / 10, 20); ///////////// Cambiar a statics como playerwith, etc
+			InitPlayer(screenWidth / 2.0f, screenHeight * 7.0f / 8.0f, screenWidth / 10.0f, 20.0f, player1);
 
-			player2 = InitPlayer(1, 1, 80, 20); ///////////// 
-			// Initialize ball
+			
 
-			ball = InitBall(screenWidth / 2, screenHeight * 7 / 8 - 30, 7);
-			ball.speed.x = 0;
-			ball.speed.y = 0;
+			ball = InitBall(screenWidth / 2.0f, screenHeight * 7.0f / 8.0f - 30.0f, 7.0f);
+			ball.speed.x = 0.0f;
+			ball.speed.y = 0.0f;
 			ball.active = false;
 
 			// Initialize bricks
-			int initialDownPosition = 50;
+			int initialDownPosition = 50.0f;
 
 			for (int i = 0; i < LINES_OF_BRICKS; i++)
 			{
@@ -67,10 +69,10 @@ namespace RlArkJB
 				if (!pause)
 				{
 					// Player movement logic
-					if (IsKeyDown(KEY_LEFT)) player1.position.x -= 5;
-					if ((player1.position.x - player1.size.x / 2) <= 0) player1.position.x = player1.size.x / 2;
-					if (IsKeyDown(KEY_RIGHT)) player1.position.x += 5;
-					if ((player1.position.x + player1.size.x / 2) >= screenWidth) player1.position.x = screenWidth - player1.size.x / 2;
+					if (IsKeyDown(KEY_LEFT)) player1.position.x -= player1.speed * GetFrameTime();
+					if ((player1.position.x - player1.size.x / 2) <= 0) player1.position.x = player1.size.x / 2 ;
+					if (IsKeyDown(KEY_RIGHT)) player1.position.x += player1.speed * GetFrameTime();
+					if ((player1.position.x + player1.size.x / 2) >= screenWidth) player1.position.x = screenWidth - player1.size.x / 2 ;
 
 					// Ball launching logic
 					if (!ball.active)
@@ -85,8 +87,8 @@ namespace RlArkJB
 					// Ball movement logic
 					if (ball.active)
 					{
-						ball.position.x += ball.speed.x;
-						ball.position.y += ball.speed.y;
+						ball.position.x += ball.speed.x* 50 * GetFrameTime();
+						ball.position.y += ball.speed.y* 50 * GetFrameTime();
 					}
 					else
 					{

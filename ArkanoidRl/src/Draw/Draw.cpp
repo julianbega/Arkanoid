@@ -40,7 +40,7 @@ namespace RlArkJB
 
 				if (pause) DrawText("GAME PAUSED", screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
 			}
-			else DrawText("PRESS [ENTER] TO PLAY AGAIN", screenWidth / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, screenHeight / 2 - 50, 20, GRAY);
+			
 
 			EndDrawing();
 		}
@@ -51,4 +51,39 @@ namespace RlArkJB
 			DrawGame(ball, player1, player2);
 		}
 
+		void DrawMenu() 
+		{
+			BeginDrawing();
+
+			ClearBackground(RAYWHITE);
+
+			if (!gameOver)
+			{
+				DrawText("Game Menu", screenWidth / 2 - MeasureText("Press esc to leave", 40) / 2, screenHeight / 2 - MeasureText("Press esc to leave", 40) / 2, 40, GRAY);
+				DrawText("Press enter to play", screenWidth / 2 - MeasureText("Game Menu", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+				DrawText("Press esc to leave", screenWidth / 2 - MeasureText("Game Menu", 40) / 2, screenHeight / 2 + 40, 40, GRAY);
+
+			}
+			
+
+			EndDrawing();
+		}
+
+		void DrawGameOver() 
+		{
+			BeginDrawing();
+
+			ClearBackground(RAYWHITE);
+
+			if (!gameOver)
+			{
+				DrawText("GameOver", screenWidth / 2 - MeasureText("Press esc to leave", 40) / 2, screenHeight / 2 - MeasureText("Press esc to leave", 40) / 2, 40, GRAY);
+				DrawText("Press enter to go to menu", screenWidth / 2 - MeasureText("Game Menu", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+				DrawText("Press esc to leave", screenWidth / 2 - MeasureText("Game Menu", 40) / 2, screenHeight / 2 + 40, 40, GRAY);
+
+			}
+
+
+			EndDrawing();
+		}
 }

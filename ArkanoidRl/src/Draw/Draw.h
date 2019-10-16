@@ -9,9 +9,10 @@
 
 namespace RlArkJB
 {
-
-		void DrawGame(Ball &ball, Player &player1, Player &player2);
-		void UpdateDrawFrame(Ball &ball, Player &player1, Player &player2);
+	void DrawMenu();
+	void DrawGame(Ball &ball, Player &player1, Player &player2);
+	void UpdateDrawFrame(Ball &ball, Player &player1, Player &player2);
+	void DrawGameOver();
 
 }
 #endif

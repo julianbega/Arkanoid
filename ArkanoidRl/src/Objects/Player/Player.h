@@ -5,14 +5,16 @@
 
 namespace RlArkJB
 {
-#define PLAYER_MAX_LIFE         5
+
 
 	struct Player {
 		Vector2 position;
 		Vector2 size;
 		int life;
+		const int maxLife = 5;
+		float speed = 200;
 	} ;
 		
-	Player InitPlayer(int posX, int posY, int width, int height);
+	void InitPlayer(int posX, int posY, int width, int height, Player &player);
 }
 #endif

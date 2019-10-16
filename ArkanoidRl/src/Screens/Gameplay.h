@@ -1,5 +1,5 @@
-#ifndef PANTALLA_DE_JUEGO_H
-#define PANTALLA_DE_JUEGO_H
+#ifndef GAMEPLAY_H
+#define GAMEPLAY_H
 
 #include "raylib.h"
 

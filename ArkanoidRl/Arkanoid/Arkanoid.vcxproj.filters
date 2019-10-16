@@ -29,6 +29,9 @@
     <ClCompile Include="..\src\Objects\Brick\Brick.cpp">
       <Filter>Objects\Brick</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Global\Game.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Draw">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Objects\Brick\Brick.h">
       <Filter>Objects\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Global\Game.h">
+      <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

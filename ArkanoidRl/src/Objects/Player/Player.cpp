@@ -3,15 +3,13 @@
 namespace RlArkJB
 {
 
-		Player InitPlayer(int posX, int posY, int width, int height)
+		void InitPlayer(int posX, int posY, int width, int height, Player &player)
 		{
-			Player player;
 			player.position.x = posX;
 			player.position.y = posY;
 			player.size.x = width;
 			player.size.y = height;
-			player.life = PLAYER_MAX_LIFE;
-			return player;
+			player.life = player.maxLife;
 		}
 
 }

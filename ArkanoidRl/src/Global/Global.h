@@ -10,6 +10,7 @@ namespace RlArkJB
 	typedef enum GameScreen { MENUSCREEN, GAMEPLAYSCREEN, GAMEOVERSCREEN, CREDITSSCREEN, ENDING } GameScreen;
 	extern int screenWidth;
 	extern int screenHeight;
+	extern int currentScreen;
 
 
 	static bool gameOver = false;

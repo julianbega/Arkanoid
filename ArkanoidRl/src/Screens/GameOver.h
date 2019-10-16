@@ -8,7 +8,8 @@
 
 namespace RlArkJB
 {
-	
+	void GameOver();
+	void UpdateGameOver();
 }
 
 
